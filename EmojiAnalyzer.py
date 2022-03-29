@@ -7,6 +7,7 @@
 #imports
 #from asyncore import read
 import os
+import re
 
 #intialize vars
 chat_source = ""
@@ -127,45 +128,3 @@ def deleteservicemessages(textsource):
 
 
 deleteservicemessages("chat_source")
-''' def deleteownmessages(textsource):
-    print("Deleting Own Messages from: " + textsource + "\n\n\n")
-    #define Strings to purge
-    to_purge = [own_name]
-    #checking if source file exists
-    if os.path.isfile("./workingfiles/deleted_service_messages.txt"):
-        #checking if target file exists and deleting and regenerating just to be sure....
-        if os.path.isfile("./workingfiles/deleted_own_messages.txt"):
-            print("Target file already exists. Deleting\n\n")
-            os.remove("./workingfiles/deleted_own_messages.txt")
-            print("DELETED!\n\n\n\n\n\n\n")
-        else:
-            print("\n\nERROR: File Does Not Exist!\nExiting!\n\n")
-            quit()
-    #creating the file again...
-    file = open("./workingfiles/deleted_own_messages.txt",
-                "x",
-                encoding="utf8")
-    file.close()
-    #now doing the purging stuffs
-    #opening the source and target files
-    with open("./workingfiles/deleted_service_messages.txt",
-              encoding="utf8") as unfilteredfile, open(
-                  "./workingfiles/deleted_own_messages.txt",
-                  "w",
-                  encoding="utf8") as filteredfile:
-        #checking every single line in the unfiltered file
-        for line in unfilteredfile:
-            #setting standard value to true
-            clean = True
-            #checking the selected line for words to purge
-            for word in to_purge:
-                #define what happens when word is found
-                if word in line:
-                    #if word is found set clean status to false
-                    clean = False
-            #only write line to the new file if the line is clean
-            if clean == True:
-                filteredfile.write(line)
-
-
-deleteownmessages("./workingfiles/deleted_service_messages.txt") '''
